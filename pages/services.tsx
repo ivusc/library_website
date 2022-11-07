@@ -15,7 +15,7 @@ if(env == "development"){
 }
 export const getServerSideProps : GetServerSideProps = async () => {
   console.log(env)
-  const response = await fetch(baseURL).then((res) => res.json());
+  const response = await fetch('https://www.libraryapp.ivuschua.com/api/crowd').then((res) => res.json());
   return {
     props: {
       libraryData: response.libraryData
