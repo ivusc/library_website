@@ -14,7 +14,7 @@ if(env == "development"){
   baseURL = 'http://localhost:3000/api/crowd';
 }
 else if (env == "production"){
- baseURL = 'libraryapp.ivuschua.com/api/crowd';
+ baseURL = 'https://libraryapp.ivuschua.com/api/crowd';
 }
 
 export const getServerSideProps : GetServerSideProps = async () => {
