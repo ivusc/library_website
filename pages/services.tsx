@@ -8,15 +8,11 @@ interface IService {
 }
 
 const env = process.env.NODE_ENV;
-let baseURL : string;
+let baseURL : string = 'https://libraryapp.ivuschua.com/api/crowd';
 
 if(env == "development"){
   baseURL = 'http://localhost:3000/api/crowd';
 }
-else if (env == "production"){
- baseURL = 'https://libraryapp.ivuschua.com/api/crowd';
-}
-
 export const getServerSideProps : GetServerSideProps = async () => {
   console.log(env)
   const response = await fetch(baseURL).then((res) => res.json());
