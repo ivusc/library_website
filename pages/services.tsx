@@ -8,7 +8,7 @@ interface IService {
 }
 
 export const getServerSideProps : GetServerSideProps = async () => {
-  const response = await fetch('https://libraryapp.ivuschua.com/api/crowd').then((res) => res.json());
+  const response = await fetch('https://libraryapp-ivusc.vercel.app/api/crowd').then((res) => res.json());
   return {
     props: {
       libraryData: response.libraryData
