@@ -7,15 +7,15 @@ interface IService {
   libraryData: ILibData[];
 }
 
-const env = process.env.NODE_ENV;
-let baseURL : string = 'https://libraryapp.ivuschua.com/api/crowd';
-
-if(env == "development"){
-  baseURL = 'http://localhost:3000/api/crowd';
-}
 export const getServerSideProps : GetServerSideProps = async () => {
-  console.log(env)
-  const response = await fetch('https://www.libraryapp.ivuschua.com/api/crowd').then((res) => res.json());
+  const env = process.env.NODE_ENV;
+  let baseURL : string = 'https://libraryapp.ivuschua.com/api/crowd';
+
+  if(env == "development"){
+    baseURL = 'http://localhost:3000/api/crowd';
+  }
+  console.log(baseURL)
+  const response = await fetch(baseURL).then((res) => res.json());
   return {
     props: {
       libraryData: response.libraryData
@@ -24,7 +24,6 @@ export const getServerSideProps : GetServerSideProps = async () => {
 }
 
 const Services : NextPage<IService> = ({ libraryData }) => {
-  console.log(env)
   return (
     <div className='mx-10 flex flex-col space-y-3 h-screen xl:mx-[10em]'>
       <Heading>Sevices</Heading>
