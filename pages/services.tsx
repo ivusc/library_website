@@ -18,7 +18,7 @@ else if (env == "production"){
 }
 
 export const getServerSideProps : GetServerSideProps = async () => {
-  const response = await fetch().then((res) => res.json());
+  const response = await fetch(baseURL).then((res) => res.json());
   return {
     props: {
       libraryData: response.libraryData
