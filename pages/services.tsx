@@ -7,8 +7,18 @@ interface IService {
   libraryData: ILibData[];
 }
 
+const env = process.env.NODE_ENV;
+let baseURL : string;
+
+if(env == "development"){
+  baseURL = 'http://localhost:3000/api/crowd';
+}
+else if (env == "production"){
+ baseURL = 'libraryapp.ivuschua.com/api/crowd';
+}
+
 export const getServerSideProps : GetServerSideProps = async () => {
-  const response = await fetch('http://localhost:3000/api/crowd').then((res) => res.json());
+  const response = await fetch().then((res) => res.json());
   return {
     props: {
       libraryData: response.libraryData
