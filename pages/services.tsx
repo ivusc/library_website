@@ -8,14 +8,7 @@ interface IService {
 }
 
 export const getServerSideProps : GetServerSideProps = async () => {
-  const env = process.env.NODE_ENV;
-  let baseURL : string = 'https://libraryapp.ivuschua.com/api/crowd';
-
-  if(env == "development"){
-    baseURL = 'http://localhost:3000/api/crowd';
-  }
-  console.log(baseURL)
-  const response = await fetch(baseURL).then((res) => res.json());
+  const response = await fetch('https://libraryapp.ivuschua.com/api/crowd').then((res) => res.json());
   return {
     props: {
       libraryData: response.libraryData
