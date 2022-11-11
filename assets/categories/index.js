@@ -1,7 +1,9 @@
 import action from './action.png';
 import adventure from './adventure.png';
 import comedy from './comedy.png';
+import compass from './compass.png';
 import crime from './crime.png';
+import crowd from './crowd.png';
 import family from './family.png';
 import fantasy from './fantasy.png';
 import fiction from './fiction.png';
@@ -18,7 +20,9 @@ export default {
   action,
   adventure,
   comedy,
+  compass,
   crime,
+  crowd,
   family,
   fantasy,
   horror,

@@ -66,7 +66,7 @@ export const Navbar : React.FC = () => {
           {isOpen && (
             <div className='fixed inset-0 top-0 px-5 mt-[4rem] py-5 z-10 dark:bg-gray-900 bg-white h-screen overflow-hidden flex justify-start align-top flex-col'>
               <div className='p-4 text-center dark:border-gray-900 border-gray-100'>
-                {links.map((link) => <NavLink title={link.title} link={link.link} onClick={() => setIsOpen(false)} />)}
+                {links.map((link) => <NavLink title={link.title} link={link.link} onClick={() => setIsOpen(false)} key={link.title} />)}
               </div>
             </div>
           )}

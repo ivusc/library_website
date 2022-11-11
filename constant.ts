@@ -18,3 +18,8 @@ export const CategoryItems : Array<ICatItem> = [
   {image: categoryIcons['thriller'], title: 'Thriller', link: '/category/thriller'},
   {image: categoryIcons['youngAdult'], title: 'Young Adult', link: '/category/young_adult_fiction'},
 ]
+
+export const ServiceItems : Array<ICatItem> = [
+  { image: categoryIcons['crowd'], title: 'Crowd Level', link: '/services/crowd' },
+  { image: categoryIcons['compass'], title: 'Nearby Libraries', link: '/services/nearby-libs' }
+]

@@ -14,16 +14,16 @@ interface IBookDetailsPage{
 
 export const getServerSideProps : GetServerSideProps = async(context) => {
   // console.log(context.params?.title)
-  const response : GBooks = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${context.params?.title![0]}&orderBy=relevance&key=${process.env.NEXT_PUBLIC_GOOGLEBOOKS_KEY}&maxResults=1`).then((res) => res.json());
+  const response : GBooks = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${context.params?.title![1]}&orderBy=relevance&key=${process.env.NEXT_PUBLIC_GOOGLEBOOKS_KEY}&maxResults=1`).then((res) => res.json());
   
   let imgUrl: string;
 
-  if (context.params?.title![1].includes('http')) {
-    imgUrl = response.items[0].volumeInfo.imageLinks ? response.items[0].volumeInfo.imageLinks.smallThumbnail : '';
-    console.log(imgUrl)
-  } else imgUrl = `https://covers.openlibrary.org/b/olid/${context.params?.title![1]}-M.jpg`
+  if (context.params?.title![0] === 'gbs') {
+    if (context.params?.title![2].includes('flaticon')) imgUrl = 'https://cdn-icons-png.flaticon.com/512/166/166088.png';
+    else imgUrl = `http://books.google.com/books/content?id=${context.params?.title![2]}&printsec=frontcover&img=1&zoom=1&source=gbs_api`;
+  } else imgUrl = `https://covers.openlibrary.org/b/olid/${context.params?.title![2]}-M.jpg`;
 
-  // console.log(response)
+
   return {
     props: {
       book: response.items[0],
@@ -44,7 +44,7 @@ const BookDetails : NextPage<IBookDetailsPage> = ({ book, imgUrl }) => {
     <div className="md:mx-10 flex flex-col space-y-3 lg:h-screen">
       <div className="grid lg:grid-cols-2 grid-cols-1 pt-10 md:mx-20 mx-7">
         <div className='relative flex flex-1 flexCenter mt-20'>
-          <div className='md:col-span-1 col-span-2 h-[34.4em] w-[22.5em] relative overflow-hidden shadow-lg'>
+          <div className={`md:col-span-1 col-span-2 h-[34.4em] w-[22.5em] relative overflow-hidden shadow-lg ${imgUrl.includes('flaticon') ? 'bg-white' : ''} rounded-lg`}>
             <Image src={imgUrl} objectFit='cover' className='rounded-xl' layout='fill'/>
           </div>
         </div>

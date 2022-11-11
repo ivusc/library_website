@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const Category : NextPage<ICategory> = ({ category, books }) => {
   return (
-    <div className='md:mx-10 flex flex-col space-y-3 min-h-screen h-full xl:mx-[15em]'>
+    <div className='mx-10 flex flex-col space-y-3 min-h-screen h-full xl:mx-[15em] '>
       <Heading>{ capitalize(category) }</Heading>
       <Booklist books={books} type={'openlib'} />
       <div className="flexCenter mt-5 pb-8">

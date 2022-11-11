@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import { FormEvent, KeyboardEvent, useState } from 'react';
-import { Booklist, Button, Cards, Heading, Input, Title } from '../components';
+import { Booklist, Button, Cards, Input, Title } from '../components';
 import { GBook } from '../interface';
 import { getGreeting } from '../utils/greeting';
 
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         </div>
       </form>
       {books.length !== 0 ? (
-        <div className='mx-10 flex flex-col space-y-3 xl:mx-[15em] '>
+        <div className=' flex flex-col space-y-3 md:mx-[10em] min-[2000px]:mx-[15em] '>
           <Booklist title={`Results for ${query}`} books={books} type={'gbooks'}/>
         </div>
       ) : (

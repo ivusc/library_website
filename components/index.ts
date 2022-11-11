@@ -6,6 +6,7 @@ import { Input } from "./lib/Input";
 import { Button } from "./lib/Button";
 import { Modal } from "./lib/Modal";
 import { Cards } from "./home/Cards";
+import { Card } from "./home/Card";
 import { Progress } from "./lib/Progress";
 
 export {
@@ -19,5 +20,6 @@ export {
   Button,
   Modal,
   Cards,
+  Card,
   Progress,
 }

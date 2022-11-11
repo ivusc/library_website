@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import { GBook, Work } from '../../interface'
+import { getBookId } from '../../utils/getBookId';
 
 interface IBook {
   book: Work | GBook;
@@ -28,8 +29,8 @@ export const Book : React.FC<IBook> = ({ book, type }) => {
   }
 
   return (
-    <div className="max-w-2xl hover:bg-gradient-to-r dark:bg-blue-900 bg-blue-400 dark:hover:from-teal-500 dark:hover:via-sky-500 dark:hover:to-violet-500 hover:from-teal-500 hover:via-sky-500 hover:to-violet-500 rounded-lg shadow-xl hover:transform hover:scale-[1.05] transition ease-in-out cursor-pointer mb-5 hover:text-gray-100">
-      <Link href={type === 'openlib' ? `/book/${(book as Work).title}/${(book as Work).cover_edition_key}` :`/book/${(book as GBook).volumeInfo.title}/${imgUrl}` }>
+    <div className="max-w-2xl hover:bg-gradient-to-r dark:border-slate-700 border-2 dark:bg-gray-900 bg-blue-400 dark:hover:from-teal-500 dark:hover:via-sky-500 dark:hover:to-violet-500 hover:from-teal-500 hover:via-sky-500 hover:to-violet-500 rounded-lg shadow-xl hover:transform hover:scale-[1.02] transition ease-in-out cursor-pointer mb-5 hover:text-gray-100">
+      <Link href={type === 'openlib' ? `/book/olib/${(book as Work).title}/${(book as Work).cover_edition_key}` :`/book/gbs/${(book as GBook).volumeInfo.title}/${getBookId(imgUrl)}` }>
         <div>
           <div className='h-96 w-full relative '>
               <Image className="rounded-t-lg bg-white" layout='fill' objectFit='cover' src={ imgUrl } alt="" />

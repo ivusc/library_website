@@ -231,3 +231,113 @@ interface ILibData {
   disabledFriendly: boolean;
   crowdLevel?: number;
 }
+
+//LIBRARY TYPE
+
+export interface LibraryResponse {
+  html_attributions: any[];
+  results:         Library[];
+  status:            string;
+}
+
+export interface Library {
+  business_status:       string;
+  geometry:              Geometry;
+  icon:                  string;
+  icon_background_color: string;
+  icon_mask_base_uri:    string;
+  name:                  string;
+  opening_hours:         OpeningHours;
+  photos?:               Photo[];
+  place_id:              string;
+  plus_code:             PlusCode;
+  rating:                number;
+  reference:             string;
+  scope:                 string;
+  types:                 Type[];
+  user_ratings_total:    number;
+  vicinity:              string;
+}
+
+export interface Geometry {
+  location: Location;
+  viewport: Viewport;
+}
+
+export interface Location {
+  lat: number;
+  lng: number;
+}
+
+export interface Viewport {
+  northeast: Location;
+  southwest: Location;
+}
+
+export interface OpeningHours {
+  open_now: boolean;
+}
+
+export interface Photo {
+  height:            number;
+  html_attributions: string[];
+  photo_reference:   string;
+  width:             number;
+}
+
+export interface PlusCode {
+  compound_code: string;
+  global_code:   string;
+}
+
+export enum Type {
+  Establishment = "establishment",
+  Library = "library",
+  PointOfInterest = "point_of_interest",
+}
+
+
+//GEOCODING
+
+export interface GeocodeResponse {
+  plus_code: PlusCode;
+  results:   Address[];
+  status:    string;
+}
+
+export interface PlusCode {
+  compound_code: string;
+  global_code:   string;
+}
+
+export interface Address {
+  address_components: AddressComponent[];
+  formatted_address:  string;
+  geometry:           Geometry;
+  place_id:           string;
+  plus_code?:         PlusCode;
+  types:              string[];
+}
+
+export interface AddressComponent {
+  long_name:  string;
+  short_name: string;
+  types:      string[];
+}
+
+export interface Geometry {
+  location:      Location;
+  location_type: string;
+  viewport:      Bounds;
+  bounds?:       Bounds;
+}
+
+export interface Bounds {
+  northeast: Location;
+  southwest: Location;
+}
+
+export interface Location {
+  lat: number;
+  lng: number;
+}
