@@ -2,7 +2,7 @@
 <div align='center'>
   
   # 📘 Library Website 📘
-  <img src='./assets/images/thumbnail.png' height='300px' />
+  <img src='./assets/images/thumbnail.png' />
 
 </div>
 
