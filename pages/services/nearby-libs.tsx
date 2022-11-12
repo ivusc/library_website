@@ -19,38 +19,33 @@ const Nearby : NextPage = () => {
   const [loading, setLoading] = useState(false);
 
   const getLibData = (latitude: number, longitude: number) => {
-    return fetch(`${PROD_URL}/api/lib/${latitude},${longitude}`).then((res) => res.json())
+    return fetch(`${DEV_URL}/api/lib/${latitude},${longitude}`).then((res) => res.json())
       .then((libraries) =>{ 
-        console.log(libraries)
         setLibraries(libraries.libraries);
-        return fetch(`${PROD_URL}/api/geocode/${latitude},${longitude}`).then((res) => res.json())
+        return fetch(`${DEV_URL}/api/geocode/${latitude},${longitude}`).then((res) => res.json())
           .then((address)=> setAddress(address.geocode));
       })
   }
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // console.log("Latitude is : ", position.coords.latitude);
-          // console.log("Longitude is :", position.coords.longitude);
-          
-          if (position.coords.latitude !== NaN) {
-            setGeolocation({ latitude: position.coords.latitude, longitude: position.coords.longitude })
-            // console.log('finding libraries and current location',position.coords.latitude, position.coords.longitude)
-            setLoading(true)
-            getLibData(position.coords.latitude,position.coords.longitude);
-            setLoading(false)
+    const interval = setInterval(() => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {         
+            if (position.coords.latitude !== NaN) {
+              setGeolocation({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+              getLibData(position.coords.latitude,position.coords.longitude)
+            }
+          },
+          (error) => {
+            console.error("Error Code = " + error.code + " - " + error.message);
           }
-        },
-        (error) => {
-          console.error("Error Code = " + error.code + " - " + error.message);
-        }
-      )
-    }
-  }, [])
+        )
+      }
+    },60000)
 
-  if (loading) return <Loader />
+    return () => clearInterval(interval)
+  }, [geolocation])
   
   return (
     <div className='mx-10 flex flex-col space-y-1 h-full min-h-screen xl:mx-[10em]'>
