@@ -2,7 +2,7 @@
 <div align='center'>
   
   # 📘 Library Website 📘
-  <img src='./assets/images/thumbnail.png' height='300px' />
+  <img src='./assets/images/thumbnail.png' />
 
 </div>
 
@@ -11,6 +11,7 @@
 
 - QR Code of page to instantly bring you to the book
 - Library Crowd Indication
+- Nearby Libraries List
 - Read Book Sample
 
 # Tech Stack 💻	
