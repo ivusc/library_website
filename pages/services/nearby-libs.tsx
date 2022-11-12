@@ -19,10 +19,10 @@ const Nearby : NextPage = () => {
   const [loading, setLoading] = useState(false);
 
   const getLibData = (latitude: number, longitude: number) => {
-    return fetch(`${DEV_URL}/api/lib/${latitude},${longitude}`).then((res) => res.json())
+    return fetch(`${PROD_URL}/api/lib/${latitude},${longitude}`).then((res) => res.json())
       .then((libraries) =>{ 
         setLibraries(libraries.libraries);
-        return fetch(`${DEV_URL}/api/geocode/${latitude},${longitude}`).then((res) => res.json())
+        return fetch(`${PROD_URL}/api/geocode/${latitude},${longitude}`).then((res) => res.json())
           .then((address)=> setAddress(address.geocode));
       })
   }
