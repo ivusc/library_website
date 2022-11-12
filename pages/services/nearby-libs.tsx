@@ -41,7 +41,7 @@ const Nearby : NextPage = () => {
         }
       )
     }
-  }, [geolocation])
+  }, [])
   
   return (
     <div className='mx-10 flex flex-col space-y-1 h-full min-h-screen xl:mx-[10em]'>
