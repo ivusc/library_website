@@ -28,23 +28,19 @@ const Nearby : NextPage = () => {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {         
-            if (position.coords.latitude !== NaN) {
-              setGeolocation({ latitude: position.coords.latitude, longitude: position.coords.longitude })
-              getLibData(position.coords.latitude,position.coords.longitude)
-            }
-          },
-          (error) => {
-            console.error("Error Code = " + error.code + " - " + error.message);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {         
+          if (position.coords.latitude !== NaN) {
+            setGeolocation({ latitude: position.coords.latitude, longitude: position.coords.longitude })
+            getLibData(position.coords.latitude,position.coords.longitude)
           }
-        )
-      }
-    },60000)
-
-    return () => clearInterval(interval)
+        },
+        (error) => {
+          console.error("Error Code = " + error.code + " - " + error.message);
+        }
+      )
+    }
   }, [geolocation])
   
   return (
