@@ -11,6 +11,7 @@
 
 - QR Code of page to instantly bring you to the book
 - Library Crowd Indication
+- Nearby Libraries List
 - Read Book Sample
 
 # Tech Stack 💻	
