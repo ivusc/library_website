@@ -6,8 +6,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { geolocation } = req.query;
     let [latitude, longitude] = (geolocation as string).split(',');
 
+    console.log(process.env.NEXT_PUBLIC_GOOGLEMAPS_API_KEY)
     const response : GeocodeResponse  = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.NEXT_PUBLIC_GOOGLEMAPS_API_KEY}`).then((res) => res.json())
-
+    console.log(response.results[0])
     res.status(200).send({ geocode: response.results[0] })
 
   } catch (error) {
