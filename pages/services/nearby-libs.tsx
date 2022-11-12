@@ -32,6 +32,7 @@ const Nearby : NextPage = () => {
             console.log(position.coords.latitude,position.coords.longitude,position.coords.accuracy)
             fetch(`${PROD_URL}/api/lib/${position.coords.latitude},${position.coords.longitude}`).then((res) => res.json())
               .then((libraries) =>{ 
+                console.log(libraries)
                 setLibraries(libraries.libraries);
             });
             fetch(`${PROD_URL}/api/geocode/${position.coords.latitude},${position.coords.longitude}`).then((res) => res.json())
