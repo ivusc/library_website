@@ -9,6 +9,9 @@ interface IGeolocation {
   longitude: number
 }
 
+const DEV_URL = 'http://localhost:3000'
+const PROD_URL = 'https://libraryapp-ivusc.vercel.app'
+
 const Nearby : NextPage = () => {
   const [geolocation, setGeolocation] = useState<IGeolocation>({ latitude: NaN, longitude: NaN });
   const [libraries, setLibraries] = useState<Library[]>([]);
@@ -26,9 +29,12 @@ const Nearby : NextPage = () => {
             setGeolocation({ latitude: position.coords.latitude, longitude: position.coords.longitude })
             // console.log('finding libraries and current location',position.coords.latitude, position.coords.longitude)
             setLoading(true)
-            fetch(`https://libraryapp-ivusc.vercel.app/api/lib/${position.coords.latitude},${position.coords.longitude}`).then((res) => res.json())
-              .then((libraries) => setLibraries(libraries.libraries));
-            fetch(`https://libraryapp-ivusc.vercel.app/api/geocode/${position.coords.latitude},${position.coords.longitude}`).then((res) => res.json())
+            console.log(position.coords.latitude,position.coords.longitude,position.coords.accuracy)
+            fetch(`${PROD_URL}/api/lib/${position.coords.latitude},${position.coords.longitude}`).then((res) => res.json())
+              .then((libraries) =>{ 
+                setLibraries(libraries.libraries);
+            });
+            fetch(`${PROD_URL}/api/geocode/${position.coords.latitude},${position.coords.longitude}`).then((res) => res.json())
               .then((address) => setAddress(address.geocode));
             setLoading(false)
           }
