@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['covers.openlibrary.org', 'books.google.com', 'cdn-icons-png.flaticon.com' ],
+    unoptimized: true
   },
   eslint: {
     // Warning: This allows production builds to successfully complete even if

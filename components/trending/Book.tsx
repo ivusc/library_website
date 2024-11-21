@@ -33,7 +33,7 @@ export const Book : React.FC<IBook> = ({ book, type }) => {
       <Link href={type === 'openlib' ? `/book/olib/${(book as Work).title}/${(book as Work).cover_edition_key}` :`/book/gbs/${(book as GBook).volumeInfo.title}/${getBookId(imgUrl)}` }>
         <div>
           <div className='h-96 w-full relative '>
-              <Image className="rounded-t-lg bg-white" layout='fill' objectFit='cover' src={ imgUrl } alt="" />
+              <Image className="rounded-t-lg bg-white object-cover" src={ imgUrl } alt="book image" fill/>
           </div>
           <div className="p-5 ">
               <h5 className="mb-2 text-2xl font-bold tracking-tight card-title font-poppins">{type === 'openlib' ? (book as Work).title : (book as GBook).volumeInfo.title}</h5>

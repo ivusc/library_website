@@ -45,7 +45,7 @@ const BookDetails : NextPage<IBookDetailsPage> = ({ book, imgUrl }) => {
       <div className="grid lg:grid-cols-2 grid-cols-1 pt-10 md:mx-20 mx-7">
         <div className='relative flex flex-1 flexCenter mt-20'>
           <div className={`md:col-span-1 col-span-2 h-[34.4em] w-[22.5em] relative overflow-hidden shadow-lg ${imgUrl.includes('flaticon') ? 'bg-white' : ''} rounded-lg`}>
-            <Image src={imgUrl} objectFit='cover' className='rounded-xl' layout='fill'/>
+            <Image src={imgUrl} className='rounded-xl object-cover' alt='book image' fill/>
           </div>
         </div>
         <div className='relative justify-center align-top'>
