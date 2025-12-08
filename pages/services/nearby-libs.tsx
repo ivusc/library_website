@@ -21,6 +21,7 @@ const Nearby : NextPage = () => {
   const getLibData = (latitude: number, longitude: number) => {
     return fetch(`${DEV_URL}/api/lib/${latitude},${longitude}`).then((res) => res.json())
       .then((libraries) =>{ 
+        console.log(libraries)
         setLibraries(libraries.libraries);
         return fetch(`${DEV_URL}/api/geocode/${latitude},${longitude}`).then((res) => res.json())
           .then((address)=> setAddress(address.geocode));

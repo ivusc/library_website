@@ -9,6 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     
     const response : LibraryResponse = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude}%2C${longitude}&radius=5000&type=library&keyword=library&key=${process.env.NEXT_PUBLIC_GOOGLEMAPS_API_KEY}`).then((res) => res.json())
 
+    console.log(response)
     res.status(200).send({ libraries: response.results.slice(0,3) })
     
   } catch (error){
